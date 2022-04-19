@@ -1,0 +1,13 @@
+{
+    "version": 3,
+    "mappings": "AEEA;8BAC8B;ADA9B;8BAC8B;AAY9B;8BAC8B;AAkC9B;8BAC8B;AAe9B;8BAC8B;AAI5B,AAAA,UAAU,CAAH;EDrEP,UAAU,EAAE,IAAI;CCuEf;;AAqBG,AAAA,iBAAiB,CAAG;ED1FtB,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,KAAK;CC2FV;;AAaH,AAAA,wBAAwB,CAAJ;EDtGlB,KAAK,EAAE,KAAK;CCwGb;;AAFD,AAAA,iBAAiB,CAAG;EDlGpB,KAAK,EAAE,IAAI;CCoGV;;AAjBC,AAAA,iBAAiB,CAAG;ED1ExB,KAAK,EAAE,IAAI;CC4EN",
+    "sources": [
+        "index.scss",
+        "mixins/mixins.scss",
+        "mixins/function.scss",
+        "mixins/config.scss",
+        "mixins/var.scss"
+    ],
+    "names": [],
+    "file": "index.css"
+}

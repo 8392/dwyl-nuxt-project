@@ -1,0 +1,23 @@
+@import './mixins/mixins.scss';
+
+@include b(home) {
+  background: #f00;
+  @include e(warap) {
+    color: #ccc;
+    height: 200px;
+    @include m(inner) {
+      width: 100px;
+    }
+  }
+  @include m(error) {
+    color: #f00;
+    // @include m(inner) {
+    //   width: 100px;
+    // }
+  }
+}
+
+
+@include e(order) {
+  color: #f00;
+}

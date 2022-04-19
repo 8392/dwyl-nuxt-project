@@ -1,0 +1,31 @@
+/* BEM support Func
+ -------------------------- */
+/* Break-points
+ -------------------------- */
+/* Scrollbar
+ -------------------------- */
+/* Placeholder
+ -------------------------- */
+/* BEM
+ -------------------------- */
+.dwyl-home {
+  background: #f00;
+}
+
+.dwyl-home__warap {
+  color: #ccc;
+  height: 200px;
+}
+
+.dwyl-home__warap--inner {
+  width: 100px;
+}
+
+.dwyl-home--error {
+  color: #f00;
+}
+
+.dwyl-home__order {
+  color: #f00;
+}
+/*# sourceMappingURL=index.css.map */
