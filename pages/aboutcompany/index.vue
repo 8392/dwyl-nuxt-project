@@ -1,5 +1,4 @@
 <template>
-  <!-- 平台介绍 -->
   <div class="common-route-main">
     <Header />
     <page-main :menu-list='menuList' />
@@ -7,12 +6,14 @@
 </template>
 
 <script>
-import PageMain from '../../components/PageMain.vue'
 export default {
-  name: 'Platform',
-  components: { PageMain },
+  name: 'Aboutcompany',
   async asyncData({$axios}) {
-   
+    const data = await $axios.get('25365/main')
+    return {
+      listData: data.data.res_body.data,
+      city: 666
+    }
   },
   data() {
     return {
@@ -24,23 +25,7 @@ export default {
     }
   },
   methods: {
-    async changeData() {
-      const data = await this.$axios.get('25365/main')
-      this.city = '重庆'
-      this.$store.dispatch('getCityData', '哈哈哈11')
-      this.$message('你好啊')
-    },
-    goPageHome() {
-      this.$router.push({
-        path: '/home',
-        query: {
-          city: '北京'
-        }
-      })
-    },
-    handleMenu(item) {
-      this.activeMenu = item.id
-    }
+
   }
 }
 </script>

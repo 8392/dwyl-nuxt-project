@@ -188,3 +188,18 @@
   }
 }
 
+
+@mixin mobile-only($type) {
+  @if $type=='mobile' {
+    body {
+      background-color: #f00 !important;
+    }
+  }
+
+  @if $type=='pc' {
+    body {
+      background-color: rgb(45, 223, 125) !important;
+    }
+  }
+
+}

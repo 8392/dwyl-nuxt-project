@@ -172,21 +172,18 @@
   }
 }
 
-@mixin extend-rule($name) {
-  @extend #{'%shared-'+$name};
-}
 
-@mixin share-rule($name) {
-  $rule-name: '%shared-'+$name;
-
-  @at-root #{$rule-name} {
-    @content
+@mixin media-type($type) {
+  @if $type == mobile {
+    @media only screen and (max-width: 768px) {
+      @content;
+    }
   }
-}
 
-@mixin pseudo($pseudo) {
-  @at-root #{&}#{':#{$pseudo}'} {
-    @content
+  @if $type == pc {
+    @media only screen and (min-width: 768px) {
+      @content;
+    }
   }
+  
 }
-

@@ -1,23 +1,41 @@
 @import './mixins/mixins.scss';
 
-@include b(home) {
-  background: #f00;
-  @include e(warap) {
-    color: #ccc;
-    height: 200px;
-    @include m(inner) {
-      width: 100px;
-    }
-  }
-  @include m(error) {
-    color: #f00;
-    // @include m(inner) {
-    //   width: 100px;
-    // }
-  }
-}
+// @include b(home) {
+//   background: #f00;
+//   @include e(warap) {
+//     color: #ccc;
+//     height: 200px;
+//     @include m(inner) {
+//       width: 100px;
+//     }
+//   }
+//   @include m(error) {
+//     color: #f00;
+//     // @include m(inner) {
+//     //   width: 100px;
+//     // }
+//   }
+// }
 
 
-@include e(order) {
-  color: #f00;
-}
+// @include e(order) {
+//   color: #f00;
+// }
+
+
+// @mixin mobile-only($type) {
+//   @if $type==mobile {
+//     body {
+//       background-color: #f00 !important;
+//     }
+//   }
+
+//   @if $type==pc {
+//     body {
+//       background-color: rgb(45, 223, 125) !important;
+//     }
+//   }
+
+// }
+
+@include mobile-only(mobile);

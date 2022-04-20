@@ -4,12 +4,12 @@
     <div class="dwyl-PageMain__mMenu">
       <div class="dwyl-PageMain__mMenu--title" @click="viewAllMeth">查看全部</div>
       <div v-show="isMenList" class="dwyl-PageMain__mMenu--wrap">
-        <div v-for="item in menuList" :key="item.id" class="dwyl-PageMain__mMenu--list" @click="handleMenu(item)">{{item.title}}</div>
+        <div v-for="item in menuList" :key="item.id" :class="['dwyl-PageMain__mMenu--list', {'is-active': activeMenu === item.id}]" @click="handleMenu(item)">{{item.title}}</div>
       </div>
     </div>  
     <div class="dwyl-PageMain__content">
       <!-- eslint-disable vue/no-v-html -->
-      <div class="dwyl-PageMain__left" v-html="getCurrHtml"></div>
+      <div ref="mainLeftRef" class="dwyl-PageMain__left" v-html="getCurrHtml"></div>
       <div class="dwyl-PageMain__right">
         <div v-for="item in menuList" :key="item.id" :class="['dwyl-PageMain__right--item', {'is-active': activeMenu === item.id}]" @click="handleMenu(item)">{{item.title}}</div>
       </div>
@@ -58,6 +58,9 @@ export default {
     handleMenu(item) {
       this.activeMenu = item.id
       this.isMenList = false
+      /* 切换元素时，滚动到顶部 */
+      const leftRef = this.$refs.mainLeftRef
+      leftRef.scrollTo(0, 0)
     },
     /* 查看全部 */
     viewAllMeth() {
@@ -74,12 +77,9 @@ export default {
   display: flex;
   flex-flow: column;
   background-color: #fff;
-  margin-top: 50px;
   flex: 1;
   overflow: hidden;
   @include e(mMenu) {
-    width: 220px;
-    height: 45px;
     position: relative;
     @include m(title) {
       height: 45px;
@@ -103,6 +103,13 @@ export default {
       padding: 15px;
       color: #999;
       margin: 5px 0 5px 0;
+      &:hover{
+        color: $main_color;
+      }
+      @include when(active) {
+        background-color: $main_color;
+        color: #fff;
+      }
     }
   }
   @include e(content) {
@@ -142,8 +149,8 @@ export default {
   }
 }
 
-/* 智能手机 */ 
-@media only screen and (max-width: 768px) { 
+/* 媒体查询 */
+@include media-type(mobile) {
   .dwyl-PageMain__right{
     display: none;
   }
@@ -153,8 +160,8 @@ export default {
   .dwyl-PageMain{
     width: 100%;
   }
-} 
-@media only screen and (min-width: 768px) { 
+}
+@include media-type(pc) {
   .dwyl-PageMain__right{
     display: block;
   }
@@ -164,5 +171,5 @@ export default {
   .dwyl-PageMain{
     width: 70%;
   }
-} 
+}
 </style>

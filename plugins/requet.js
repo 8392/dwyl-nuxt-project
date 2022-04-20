@@ -8,11 +8,10 @@ export default (ctx, inject) => {
     // console.log('来了', Message)
     // Message.success('成功了')
     if (typeof window !== 'undefined') {
-       Message({
-         message: '成功了',
-         type: 'error',
-         // duration: 5 * 1000,
-       })
+      //  Message({
+      //    message: '成功了',
+      //    type: 'success',
+      //  })
      }
   })
 }

@@ -29,7 +29,7 @@ export default {
   data() {
     return {
       list: [
-        {id: 1, title: '首页', path: '/home'},
+        {id: 1, title: '首页', path: '/'},
         {id: 2, title: '平台介绍', path: '/platform'},
         {id: 3, title: '解决方案', path: '/solution'},
         {id: 4, title: '企业介绍', path: '/aboutcompany'},
@@ -79,6 +79,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 50px;
   @include e(left) {
     img{
       width: 127px;
@@ -99,7 +100,7 @@ export default {
       &:hover{
         color: $main_color;
       }
-      @include when(active) {
+       @include when(active) {
         background-color: $main_color;
         color: #fff;
         &:hover{
@@ -174,21 +175,21 @@ export default {
   }
 }
 
-/* 智能手机 */ 
-@media only screen and (max-width: 768px) { 
+/* 媒体查询 */ 
+@include media-type(mobile) {
   .dwyl-headerM{
     display: flex;
   }
   .dwyl-header{
     display: none;
   }
-} 
-@media only screen and (min-width: 768px) { 
+}
+@include media-type(pc) {
   .dwyl-header{
     display: flex;
   }
   .dwyl-headerM{
     display: none;
   }
-} 
+}
 </style>

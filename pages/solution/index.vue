@@ -1,6 +1,6 @@
 <template>
   <!-- 平台介绍 -->
-  <div class="dwyl-solution">
+  <div class="common-route-main">
     <Header />
     <page-main :menu-list='menuList' />
   </div>
@@ -47,11 +47,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@include b(solution) {
-  background: rgb(40, 140, 242);
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-flow: column;
-}
+
 </style>
