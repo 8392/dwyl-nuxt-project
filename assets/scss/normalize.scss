@@ -41,9 +41,19 @@ figcaption {
   &:focus {
     outline: none;
   }
+  font-size: 14px;
 }
 
 html,body,#__nuxt,#__layout {
   width: 100%;
   height: 100%;
 }
+
+/* 去掉浏览器默认滚动条 */
+::-webkit-scrollbar {
+  display: none;
+}
+
+// img{
+//   width: 100%;
+// }
