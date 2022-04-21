@@ -14,5 +14,7 @@ module.exports = {
   rules: {
     'vue/multi-word-component-names': 'off',
     'no-unused-vars': 'off',
+    'no-console': 'off',
+    'nuxt/no-env-in-hooks': 'off'
   },
 }
