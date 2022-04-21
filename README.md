@@ -153,3 +153,18 @@ export default {
   }
 };
 ```
+
+### 使用element-ui的动画
+
+```js
+import ElCollapseTransition from 'element-ui/src/transitions/collapse-transition';
+components: {
+  ElCollapseTransition,
+}
+<el-collapse-transition>
+  <div
+    v-if="!renderAfterExpand || childNodeRendered"
+    v-show="expanded"
+  >
+</el-collapse-transition>
+```
