@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div ref="homeRef">
     <!-- Pc布局 -->
-    <div class="dwyl-header">
+    <div :class="['dwyl-header', 'hidden-pc', {'headerActive': isHeaderAni}]">
       <div class="dwyl-header__left">
         <img src="@/assets/img/logo_white.png" />
       </div>
@@ -10,22 +10,29 @@
       </div>
     </div>
     <!-- 移动端布局 -->
-    <div class="dwyl-headerM">
+    <div class="dwyl-headerM hidden-mobile">
       <div class="dwyl-headerM__left">
         <img src="@/assets/img/logo_white.png" />
       </div>
       <div class="dwyl-headerM__right" @click="handelOpenMenu">
         <i class="el-icon-menu"></i>
       </div>
-      <div class="dwyl-headerM__menu" :style="menuStyle">
-        <div v-for="item in list" :key="item.id" :class="['dwyl-headerM__menu--item', {'is-active': getCurrPath === item.path}]" @click="handelMenuUrl(item)">{{item.title}}</div>
-      </div>
+      <el-collapse-transition>
+        <div v-show="isMenu" class="dwyl-headerM__menu">
+        <!-- <div class="dwyl-headerM__menu" :style="menuStyle"> -->
+          <div v-for="item in list" :key="item.id" :class="['dwyl-headerM__menu--item', {'is-active': getCurrPath === item.path}]" @click="handelMenuUrl(item)">{{item.title}}</div>
+        </div>
+      </el-collapse-transition>
     </div>
   </div>
 </template>
 
 <script>
+// import ElCollapseTransition from 'element-ui/src/transitions/collapse-transition';
 export default {
+  // components: {
+  //   ElCollapseTransition
+  // },
   data() {
     return {
       list: [
@@ -38,6 +45,8 @@ export default {
         {id: 7, title: '联系我们', path: '/contactus'},
         {id: 8, title: 'APP下载', path: '/app'}
       ],
+      isMenu: false,
+      isHeaderAni: false,
       menuStyle: {
         maxHeight: 0,
       }
@@ -51,17 +60,36 @@ export default {
   created() {
     // console.log('router', this.$route.path)
   },
+  mounted() {
+    this.$nextTick(() => {
+      window.addEventListener('scroll', (e) => {
+        // console.log('打印', e.target.body.scrollTop)
+        // console.log('打印', e.target.body.offsetTop)
+        // console.log('homeRef', this.$refs.homeRef.scrollTop)
+        console.log('homeRef', document.documentElement.scrollTop)
+        if(document.documentElement.scrollTop >= 50) {
+          this.isHeaderAni = true
+        }else{
+          this.isHeaderAni = false
+        }
+      })
+    })
+  },
   methods: {
+    scrollWraper(e) {
+      console.log('滚动', e)
+    },
     handelOpenMenu() {
-      if(this.menuStyle.maxHeight === 0) {
-        this.menuStyle = {
-          maxHeight: '500px'
-        }
-      }else {
-        this.menuStyle = {
-          maxHeight: 0
-        }
-      }
+      this.isMenu = !this.isMenu
+      // if(this.menuStyle.maxHeight === 0) {
+      //   this.menuStyle = {
+      //     maxHeight: '500px'
+      //   }
+      // }else {
+      //   this.menuStyle = {
+      //     maxHeight: 0
+      //   }
+      // }
     },
     /* 点击菜单 */
     handelMenuUrl(item) {
@@ -72,6 +100,26 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@keyframes fadeInDown {
+  0%{
+    opacity: 0;
+    transform: translateY(-20px)
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.headerActive{
+  animation-duration: 1s;
+  animation-name: fadeInDown;
+  background-color: #fff;
+  .dwyl-header__right--item{
+    color: #222;
+  }
+}
+
 @include b(header){
   height: 50px;
   width: 70%;
@@ -151,7 +199,7 @@ export default {
     transition: all 0.3s;
     overflow: hidden;
     background-color: #333;
-    max-height: 0;
+    // max-height: 0;
     z-index: 100;
     @include m(item) {
       line-height: 40px;
@@ -175,21 +223,23 @@ export default {
   }
 }
 
-/* 媒体查询 */ 
-@include media-type(mobile) {
-  .dwyl-headerM{
-    display: flex;
-  }
-  .dwyl-header{
-    display: none;
-  }
-}
-@include media-type(pc) {
-  .dwyl-header{
-    display: flex;
-  }
-  .dwyl-headerM{
-    display: none;
-  }
-}
+
+
+// /* 媒体查询 */ 
+// @include media-type(mobile) {
+//   .dwyl-headerM{
+//     display: flex;
+//   }
+//   .dwyl-header{
+//     display: none;
+//   }
+// }
+// @include media-type(pc) {
+//   .dwyl-header{
+//     display: flex;
+//   }
+//   .dwyl-headerM{
+//     display: none;
+//   }
+// }
 </style>

@@ -1,13 +1,20 @@
 <template>
-  <!-- <div class="common-route-main"> -->
-  <div>
-    <Header />
-    <page-main :menu-list='menuList' />
+  <div class="common-route-main">
+    <Header class="header" />
+    <!-- <page-main :menu-list='menuList' /> -->
     <div class="dwyl-home__main">
       <div class="dwyl-home__main--list">
-        <div v-for="x in 5" :key="x" class="item wow animate__zoomIn"></div>
+        <div v-for="x in 1" :key="x" class="item wow animate__zoomIn"></div>
       </div>
     </div>
+    <swiper ref="mySwiper" class="swiper__main wow animate__zoomIn" :options="swiperOption" @mouseover.native="swiperOver" @mouseout.native="swiperOut">
+      <swiper-slide class="swiper__main--li">Slide 1</swiper-slide>
+      <swiper-slide class="swiper__main--li">Slide 2</swiper-slide>
+      <swiper-slide class="swiper__main--li">Slide 3</swiper-slide>
+      <div slot="button-prev" class="swiper-button-prev"></div>
+      <div slot="button-next" class="swiper-button-next"></div>
+      <div slot="pagination" class="swiper-pagination swiper-pagination-bullets"></div>
+    </swiper>
   </div>
 </template>
 
@@ -29,24 +36,62 @@ export default {
         {id: 2, title: '智慧消防维保解决方案', html: '<p>实打实打算</p><img src="http://www.zlya.net/images/platform/maintenance/introduce.jpg" />'},
         {id: 3, title: '养老院智慧消防解决方案养老院智慧消防解决方案', html: '<p>实打实打算</p><img src="http://www.zlya.net/images/platform/maintenance/app.png" />'},
       ],
+      btnplay: true, // 默认播放
+      swiperOption: {
+        loop: true,
+        observeParents: true,
+        observer: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+          // reverseDirection: true, // 开启反向自动轮播。
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          type: 'bullets',
+          clickable: true,
+          // dynamicBullets: true,
+          bulletClass: 'my-bullet',// 需设置.my-bullet样式
+          bulletActiveClass: 'my-bullet-active',
+          // currentClass : 'my-pagination-current',// 分式类型分页器的当前索引的类名
+          // renderBullet(index, className) {
+          //   return `<span class="${className} swiper-pagination-bullet-custom">${index + 1}</span>`
+          // }
+        }
+      }
     }
   },
-  mounted(){
+  mounted() {
     // eslint-disable-next-line nuxt/no-env-in-hooks
     if (process.browser) {
       this.$nextTick(() => {
-          const { WOW } = require('wowjs')
-          new WOW({
-            boxClass: 'wow',
-            animateClass: 'animate__animated',
-            offset: 0,
-            mobile: true,
-            live: true
-          }).init()
+        const { WOW } = require('wowjs')
+        new WOW({
+          boxClass: 'wow',
+          animateClass: 'animate__animated',
+          offset: 0,
+          mobile: true,
+          live: true
+        }).init()
       });
     }
   },
   methods: {
+    swiperOver() {
+      // console.log('swiperOver', this.$refs.mySwiper)
+      // this.swiper.autoplay.stop();
+      this.$refs.mySwiper.$swiper.autoplay.stop()
+    },
+    swiperOut() {
+      // console.log('swiperOut')
+      // this.swiper.autoplay.start();
+      this.$refs.mySwiper.$swiper.autoplay.start()
+    },
     async changeData() {
       const data = await this.$axios.get('25365/main')
       this.city = '重庆'
@@ -65,7 +110,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
 @include b(home) {
   @include e(main) {
     @include m(list) {
@@ -76,5 +121,49 @@ export default {
       }
     }
   }
+}
+.swiper__main{
+  &--li{
+    width: 100%;
+    height: 200px;
+    cursor: pointer;
+  }
+}
+
+.swiper-pagination-bullets{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ .my-bullet{
+  width: 20px;
+  height: 5px;
+  background-color: #ccc;
+  display: block;
+  border-radius: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.my-bullet-active{
+  width: 40px;
+  height: 5px;
+  background-color: #f00;
+}
+.my-pagination-current{
+  width: 80px;
+  height: 20px;
+  background-color: #f00;
+}
+.common-route-main{
+  padding-top: 50px;
+  position: relative;
+}
+.header{
+  position: fixed;
+  width: 100%;
+  top: 0;
 }
 </style>

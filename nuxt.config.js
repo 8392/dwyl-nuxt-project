@@ -16,16 +16,18 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    '@/assets/scss/mixins.scss',
+    '@/assets/scss/index.scss',
     'element-ui/lib/theme-chalk/index.css',
     'element-ui/lib/theme-chalk/display.css',
     'animate.css/animate.css',
+    'node_modules/swiper/css/swiper.css',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '@/plugins/requet',
     { src: '@/plugins/ElementUI', ssr: true },
+    { src: '@/plugins/vue-awesome-swiper', ssr: true},
     // { src: '@/plugins/wow.js', ssr: false },
   ],
 

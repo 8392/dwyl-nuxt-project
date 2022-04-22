@@ -11,7 +11,7 @@ $ npm run dev
 
 # build for production and launch server
 $ npm run build
-$ npm run start
+$ npm run  start
 
 # generate static project
 $ npm run generate
@@ -168,3 +168,6 @@ components: {
   >
 </el-collapse-transition>
 ```
+
+### swiper 文档
+https://v1.github.surmon.me/vue-awesome-swiper

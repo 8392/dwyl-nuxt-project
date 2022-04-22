@@ -1,0 +1,18 @@
+@import "./mixins.scss";
+@import "./normalize.scss";
+
+
+
+@include media-type(mobile) {
+  /* 当是手机的时候，隐藏PC */
+  .hidden-pc {
+    display: none !important;
+  }
+}
+
+@include media-type(pc) {
+  /* 当是PC的时候，隐藏mobile */
+  .hidden-mobile {
+    display: none !important;
+  }
+}
