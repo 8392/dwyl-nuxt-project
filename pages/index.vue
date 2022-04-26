@@ -1,42 +1,42 @@
 <template>
-  <div class="common-route-main">
-    <Header class="header" />
-    <!-- <page-main :menu-list='menuList' /> -->
-    <div class="dwyl-home__main">
-      <div class="dwyl-home__main--list">
-        <div v-for="x in 1" :key="x" class="item wow animate__zoomIn"></div>
+  <div class="dwyl-home">
+    <Header />
+    <div class="dwyl-home__banner">
+      <swiper ref="bannerSwiperRef" class="dwyl-home__banner--swiper" :options="swiperOption" @mouseover.native="swiperOver" @mouseout.native="swiperOut">
+        <swiper-slide class="dwyl-home__banner--list">
+          <img src="@/assets/img/banner1.png" alt="">
+        </swiper-slide>
+        <swiper-slide class="dwyl-home__banner--list">
+          <!-- <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fseopic.699pic.com%2Fphoto%2F50064%2F2346.jpg_wh1200.jpg&refer=http%3A%2F%2Fseopic.699pic.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1653551324&t=71972df3c16b9bedd9dfdcea92c83b86" alt=""> -->
+          <img src="@/assets/img/banner1.png" alt="">
+        </swiper-slide>
+        <!-- <div slot="button-prev" class="swiper-button-prev"></div>
+        <div slot="button-next" class="swiper-button-next"></div> -->
+        <div slot="pagination" class="swiper-pagination swiper-pagination-bullets"></div>
+      </swiper>
+    </div>
+    <div class="dwyl-home__product">
+      <div class="dwyl-home__bgcdes">
+        <div class="dwyl-home__bgcdes--bgc">PRODUCT</div>
+        <div class="dwyl-home__bgcdes--title">
+          <i class="el-icon-plus icon"></i>
+          <span class="title">产品中心</span>
+          <i class="el-icon-plus icon"></i>
+        </div>
       </div>
     </div>
-    <swiper ref="mySwiper" class="swiper__main wow animate__zoomIn" :options="swiperOption" @mouseover.native="swiperOver" @mouseout.native="swiperOut">
-      <swiper-slide class="swiper__main--li">Slide 1</swiper-slide>
-      <swiper-slide class="swiper__main--li">Slide 2</swiper-slide>
-      <swiper-slide class="swiper__main--li">Slide 3</swiper-slide>
-      <div slot="button-prev" class="swiper-button-prev"></div>
-      <div slot="button-next" class="swiper-button-next"></div>
-      <div slot="pagination" class="swiper-pagination swiper-pagination-bullets"></div>
-    </swiper>
   </div>
 </template>
 
 <script>
 
 export default {
-  name: 'IndexPage',
+  name: 'Home',
   async asyncData({$axios}) {
-    const data = await $axios.get('25365/main')
-    return {
-      listData: data.data.res_body.data,
-      city: 666
-    }
+   
   },
   data() {
     return {
-      menuList: [
-        {id: 1, title: '城市级智慧消防解决方案', html: '<p>模块化消防站管理系统是在现有各类消防站（包括微信消防站）及新建消防站中设置一套智慧消防管理系统，负责对消防站管理半径内的建（构）筑物的消防设施进行远程集中管理，一旦发生火情系统将在第一时间进行报警，通知并引导消防站消防员前往进行处置。同时，还可对消防站日常管理、训练记录、出警记录等进行远程管理，相关数据与上级消部门实现数据交互与共享，并接受上级部门的调度指令，极大提升消防站管理效率，不断提升消防站的应急抢险及日常管理能力。</p><img src="http://www.zlya.net/images/platform/firestation/introduce.jpg" /><img src="http://www.zlya.net/images/platform/firestation/introduce.jpg" />'},
-        {id: 2, title: '智慧消防维保解决方案', html: '<p>实打实打算</p><img src="http://www.zlya.net/images/platform/maintenance/introduce.jpg" />'},
-        {id: 3, title: '养老院智慧消防解决方案养老院智慧消防解决方案', html: '<p>实打实打算</p><img src="http://www.zlya.net/images/platform/maintenance/app.png" />'},
-      ],
-      btnplay: true, // 默认播放
       swiperOption: {
         loop: true,
         observeParents: true,
@@ -45,7 +45,6 @@ export default {
           delay: 3000,
           disableOnInteraction: false,
           pauseOnMouseEnter: true,
-          // reverseDirection: true, // 开启反向自动轮播。
         },
         navigation: {
           nextEl: '.swiper-button-next',
@@ -55,115 +54,99 @@ export default {
           el: '.swiper-pagination',
           type: 'bullets',
           clickable: true,
-          // dynamicBullets: true,
           bulletClass: 'my-bullet',// 需设置.my-bullet样式
           bulletActiveClass: 'my-bullet-active',
-          // currentClass : 'my-pagination-current',// 分式类型分页器的当前索引的类名
-          // renderBullet(index, className) {
-          //   return `<span class="${className} swiper-pagination-bullet-custom">${index + 1}</span>`
-          // }
         }
       }
     }
   },
   mounted() {
-    // eslint-disable-next-line nuxt/no-env-in-hooks
-    if (process.browser) {
-      this.$nextTick(() => {
-        const { WOW } = require('wowjs')
-        new WOW({
-          boxClass: 'wow',
-          animateClass: 'animate__animated',
-          offset: 0,
-          mobile: true,
-          live: true
-        }).init()
-      });
-    }
+
   },
   methods: {
     swiperOver() {
-      // console.log('swiperOver', this.$refs.mySwiper)
-      // this.swiper.autoplay.stop();
-      this.$refs.mySwiper.$swiper.autoplay.stop()
+      this.$refs.bannerSwiperRef.$swiper.autoplay.stop()
     },
     swiperOut() {
-      // console.log('swiperOut')
-      // this.swiper.autoplay.start();
-      this.$refs.mySwiper.$swiper.autoplay.start()
+      this.$refs.bannerSwiperRef.$swiper.autoplay.start()
     },
-    async changeData() {
-      const data = await this.$axios.get('25365/main')
-      this.city = '重庆'
-      this.$store.dispatch('getCityData', '哈哈哈11')
-      this.$message('你好啊')
-    },
-    goPageHome() {
-      this.$router.push({
-        path: '/home',
-        query: {
-          city: '北京'
-        }
-      })
-    }
   }
 }
 </script>
 
-<style lang="scss" >
+<style lang="scss">
 @include b(home) {
-  @include e(main) {
-    @include m(list) {
-      .item {
-        width: 200px;
-        height: 200px;
-        background-color: #ddd;
+  position: relative;
+  @include e(bgcdes) {
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    @include m(bgc) {
+      font-size: 40px;
+      font-family: Microsoft YaHei;
+      font-weight: bold;
+      color: rgba(22, 126, 255, 0);
+      line-height: 60px;
+      -webkit-text-stroke: 1px #d2e5ff;
+      text-stroke: 1px #d2e5ff;
+    }
+    @include m(title) {
+      display: flex;
+      align-content: center;
+      position: absolute;
+      top: 19px;
+      // left: 0;
+      // right: 0;
+      // margin: 0 auto;
+      .icon{
+        font-size: 8px;
+        color: #FF4242;
+        font-weight: 600;
+        line-height: 60px;
+      }
+      .title{
+        font-size: 30px;
+        font-weight: bold;
+        color: #167EFF;
+        line-height: 60px;
+        padding: 0 10px;
       }
     }
   }
-}
-.swiper__main{
-  &--li{
-    width: 100%;
-    height: 200px;
-    cursor: pointer;
+  @include e(banner) {
+    @include m(swiper) {
+      position: relative;
+      // height: 598px;
+    }
+    @include m(list) {
+      max-height: 598px;
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  @include e(product) {
+    height: 598px;
+    background: linear-gradient(180deg, rgba(245, 248, 254, 0.5), #fff);
   }
 }
 
-.swiper-pagination-bullets{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
  .my-bullet{
-  width: 20px;
-  height: 5px;
-  background-color: #ccc;
   display: block;
-  border-radius: 10px;
   margin-right: 10px;
   cursor: pointer;
   transition: all 0.3s;
+  width: 20px;
+  height: 3px;
+  background: #DDE2EC;
 }
 
 .my-bullet-active{
-  width: 40px;
-  height: 5px;
-  background-color: #f00;
-}
-.my-pagination-current{
-  width: 80px;
-  height: 20px;
-  background-color: #f00;
-}
-.common-route-main{
-  padding-top: 50px;
-  position: relative;
-}
-.header{
-  position: fixed;
-  width: 100%;
-  top: 0;
+  // width: 40px;
+  // height: 5px;
+  background-color: #FF9E00;
 }
 </style>

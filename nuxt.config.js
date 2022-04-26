@@ -27,8 +27,9 @@ export default {
   plugins: [
     '@/plugins/requet',
     { src: '@/plugins/ElementUI', ssr: true },
-    { src: '@/plugins/vue-awesome-swiper', ssr: true},
-    // { src: '@/plugins/wow.js', ssr: false },
+    { src: '@/plugins/vue-awesome-swiper', ssr: true },
+    // { src: '@/plugins/wow.js', ssr: true },
+    '@/plugins/userAuth',  // 路由拦截
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

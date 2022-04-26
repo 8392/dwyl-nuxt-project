@@ -112,59 +112,60 @@ export default {
 }
 </script>
 
-// <style lang="scss" >
-// @include b(home) {
-//   @include e(main) {
-//     @include m(list) {
-//       .item {
-//         width: 200px;
-//         height: 200px;
-//         background-color: #ddd;
-//       }
-//     }
-//   }
-// }
-// .swiper__main{
-//   &--li{
-//     width: 100%;
-//     height: 200px;
-//     cursor: pointer;
-//   }
-// }
+<style lang="scss" >
+@include b(home) {
+  @include e(main) {
+    @include m(list) {
+      .item {
+        width: 200px;
+        height: 200px;
+        background-color: #ddd;
+      }
+    }
+  }
+}
+.swiper__main{
+  &--li{
+    width: 100%;
+    height: 200px;
+    cursor: pointer;
+  }
+}
 
-// .swiper-pagination-bullets{
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-// }
+.swiper-pagination-bullets{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-//  .my-bullet{
-//   display: block;
-//   margin-right: 10px;
-//   cursor: pointer;
-//   transition: all 0.3s;
-//   width: 20px;
-//   height: 3px;
-//   background: #DDE2EC;
-// }
+ .my-bullet{
+  width: 20px;
+  height: 5px;
+  background-color: #ccc;
+  display: block;
+  border-radius: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
 
-// .my-bullet-active{
-//   width: 40px;
-//   height: 5px;
-//   background-color: #f00;
-// }
-// .my-pagination-current{
-//   width: 80px;
-//   height: 20px;
-//   background-color: #f00;
-// }
-// .common-route-main{
-//   padding-top: 50px;
-//   position: relative;
-// }
-// .header{
-//   position: fixed;
-//   width: 100%;
-//   top: 0;
-// }
-// </style>
+.my-bullet-active{
+  width: 40px;
+  height: 5px;
+  background-color: #f00;
+}
+.my-pagination-current{
+  width: 80px;
+  height: 20px;
+  background-color: #f00;
+}
+.common-route-main{
+  padding-top: 50px;
+  position: relative;
+}
+.header{
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+</style>
