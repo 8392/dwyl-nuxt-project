@@ -44,7 +44,10 @@
   @else {
     overflow: hidden;
     display: -webkit-box;
-    display: box;
+    display: -moz-box;
+    // display: -ms-flexbox;
+    display: -o-box;
+    // display: box;
     -webkit-line-clamp: $lines;
     line-clamp: $lines;
     -webkit-box-orient: vertical;
