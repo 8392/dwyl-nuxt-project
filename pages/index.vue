@@ -19,11 +19,56 @@
       <div class="dwyl-home__bgcdes">
         <div class="dwyl-home__bgcdes--bgc">PRODUCT</div>
         <div class="dwyl-home__bgcdes--title">
-          <i class="el-icon-plus icon"></i>
+          <div class="icon"></div>
           <span class="title">产品中心</span>
-          <i class="el-icon-plus icon"></i>
+          <div class="icon"></div>
         </div>
       </div>
+      <div class="dwyl-home__product--des">
+        零平台建设成本、租用式云服务，24小时在线防火告警通知服务  
+      </div>
+      <div class="dwyl-home__product--productInfo">
+        <div class="list">
+          <div class="title">
+            <i>01</i>
+            <span>物联网</span>
+          </div>
+          <div class="icon">
+            <img src="@/assets/img/xzy_gw_sy_cpzx_wlw.png" alt="">
+          </div>
+          <div class="des">文字介绍文字介绍文字介绍 文字介绍</div>
+        </div>
+        <div class="list">
+          <div class="title">
+            <i>02</i>
+            <span>城市</span>
+          </div>
+          <div class="icon">
+            <img src="@/assets/img/xzy_gw_sy_cpzx_cd.png" alt="">
+          </div>
+          <div class="des">文字介绍文字介绍文字介绍 文字介绍</div>
+        </div>
+        <div class="list">
+          <div class="title">
+            <i>03</i>
+            <span>联网单位</span>
+          </div>
+          <div class="icon">
+            <img src="@/assets/img/xzy_gw_sy_cpzx_lwdw.png" alt="">
+          </div>
+          <div class="des">文字介绍文字介绍文字介绍 文字介绍</div>
+        </div>
+        <div class="list">
+          <div class="title">
+            <i>04</i>
+            <span>家庭</span>
+          </div>
+          <div class="icon">
+            <img src="@/assets/img/xzy_gw_sy_cpzx_jt.png" alt="">
+          </div>
+          <div title="文字介绍文字介绍文字介绍 文字介绍文字介绍文字介绍文字介绍文字介绍文字介绍" class="des">文字介绍文字介绍文字介绍 文字介绍文字介绍文字介绍文字介绍文字介绍文字介绍</div>
+        </div>
+      </div>  
     </div>
   </div>
 </template>
@@ -94,17 +139,14 @@ export default {
     }
     @include m(title) {
       display: flex;
-      align-content: center;
+      align-items: center;
       position: absolute;
       top: 19px;
-      // left: 0;
-      // right: 0;
-      // margin: 0 auto;
       .icon{
-        font-size: 8px;
-        color: #FF4242;
-        font-weight: 600;
-        line-height: 60px;
+        width: 8px;
+        height: 8px;
+        background: url('@/assets/img/icon_jiahao.png') no-repeat center center;
+        background-size: 100% 100%;
       }
       .title{
         font-size: 30px;
@@ -132,6 +174,55 @@ export default {
   @include e(product) {
     height: 598px;
     background: linear-gradient(180deg, rgba(245, 248, 254, 0.5), #fff);
+    @include m(des) {
+      font-size: 20px;
+      color: #6E7279;
+      line-height: 36px;
+      text-align: center;
+      padding-top: 20px;
+    }
+    @include m(productInfo) {
+      width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 40px;
+      .list{
+        display: flex;
+        align-items: center;
+        flex-flow: column;
+        width: 205px;
+        .title{
+          display: flex;
+          align-items: center;
+          i{
+            font-size: 40px;
+            font-weight: 600;
+            color: #ff9e00;
+          }
+          span{
+            font-size: 24px;
+            color: #292A2C;
+          }
+        }
+        .icon{
+          width: 205px;
+          height: 205px;
+          img{
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .des{
+          font-size: 18px;
+          color: #6E7279;
+          line-height: 30px;
+          padding-top: 10px;
+          @include ellipsis(2);
+        }
+      }
+    }
   }
 }
 

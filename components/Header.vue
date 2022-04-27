@@ -3,8 +3,11 @@
     <div class="dwyl-header__left">
       <div class="dwyl-header__logo"></div>
       <div class="dwyl-header__menu">
-        <div v-for="item in menuList" :key="item.id" :class="['dwyl-header__menu--item', {active: !!item.children}]">
-          {{item.title}}
+        <div v-for="item in menuList" :key="item.id" class="dwyl-header__menu--item">
+          <span>
+            {{item.title}}
+          </span>
+          <i v-if="item.children" class="el-icon-caret-bottom"></i>
           <div v-if="item.children" class="dwyl-header__menu--child">
             <div v-for="child in item.children" :key="child.id" class="list">{{child.title}}</div>
           </div>
@@ -107,31 +110,23 @@ export default {
       padding: 10px 30px;
       position: relative;
       position: relative;
+      i{
+        color: #5D6064;
+        margin-left: 9px;
+      }
       &:hover{
-        color: #167EFF;
-        font-weight: bold;
+        transition: all .3s ease-in-out;
         .dwyl-header__menu--child{
           display: block;
-          color: #6E7279;
-          font-weight: 400;
         }
-      }
-      &.active{
-        display: flex;
-        &:hover{
-          &::after {
-            top: -6px;
-            border-top: inherit;
-            border-bottom: 6px solid #167EFF;
-          }
+        span{
+          color: #167EFF;
+          font-weight: bold;
         }
-        &::after {
-          content: "";
-          position: relative;
-          left: 10px;
-          top: 10px;
-          border: 6px solid transparent;
-          border-top: 6px solid #5D6064;
+        i{
+          transition: all 0.3s ease-in-out;
+          color: #167EFF;
+          transform: rotate(180deg);
         }
       }
     } 
@@ -184,6 +179,10 @@ export default {
       color: #FFFFFF;
       background: #167EFF;
       cursor: pointer;
+      &:hover{
+        background-color: #2670e8;
+        transition: all .2s ease-in-out;
+      }
     }
   }
 }
