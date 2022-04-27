@@ -121,7 +121,8 @@ export default {
       // height: 598px;
     }
     @include m(list) {
-      max-height: 598px;
+      // max-height: 598px;
+      height: 31vw;
       img{
         width: 100%;
         height: 100%;
