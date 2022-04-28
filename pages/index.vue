@@ -7,11 +7,8 @@
           <img src="@/assets/img/banner1.png" alt="">
         </swiper-slide>
         <swiper-slide class="dwyl-home__banner--list">
-          <!-- <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fseopic.699pic.com%2Fphoto%2F50064%2F2346.jpg_wh1200.jpg&refer=http%3A%2F%2Fseopic.699pic.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1653551324&t=71972df3c16b9bedd9dfdcea92c83b86" alt=""> -->
           <img src="@/assets/img/banner1.png" alt="">
         </swiper-slide>
-        <!-- <div slot="button-prev" class="swiper-button-prev"></div>
-        <div slot="button-next" class="swiper-button-next"></div> -->
         <div slot="pagination" class="swiper-pagination swiper-pagination-bullets"></div>
       </swiper>
     </div>
@@ -120,7 +117,6 @@
     </div>
     <div class="dwyl-home__realdata">
       <div class="dwyl-home__bgcdes">
-        <!-- <div class="dwyl-home__bgcdes--bgc">SOLUTION</div> -->
         <div class="dwyl-home__bgcdes--title">
           <div class="icon"></div>
           <span class="title">企业实力数据</span>
@@ -180,12 +176,6 @@
             <swiper-slide>Slide 4</swiper-slide>
             <swiper-slide>Slide 5</swiper-slide>
             <swiper-slide>Slide 6</swiper-slide>
-            <swiper-slide>Slide 7</swiper-slide>
-            <swiper-slide>Slide 8</swiper-slide>
-            <swiper-slide>Slide 9</swiper-slide>
-            <swiper-slide>Slide 9</swiper-slide>
-            <swiper-slide>Slide 9</swiper-slide>
-            <swiper-slide>Slide 10</swiper-slide>
           </swiper>
           <div class="dwyl-home__news--prev" @click="handleNewsBtn(1)"></div>
           <div class="dwyl-home__news--next" @click="handleNewsBtn(2)"></div>
@@ -344,6 +334,7 @@ export default {
 <style lang="scss">
 @include b(home) {
   position: relative;
+  min-width: 1200px;
   @include e(bgcdes) {
     position: relative;
     display: flex;
@@ -384,6 +375,7 @@ export default {
     @include m(swiper) {
       position: relative;
       // height: 598px;
+      min-width: 1200px;
     }
     @include m(list) {
       // max-height: 598px;
@@ -573,7 +565,7 @@ export default {
   }
   @include e(realdata) {
     // height: 734px;
-    width: 100%;
+    min-width: 1200px;
     height: 38.23vw;
     background: url('@/assets/img/xzy_gw_sy_qyslsj.png') no-repeat center center;
     background-size: 100% 100%;
@@ -603,7 +595,7 @@ export default {
       padding-left: 525px;      
       display: flex;
       align-items: center;
-      width: 1200px;
+      max-width: 1200px;
       justify-content: space-between;
       padding-top: 100px;
       .l{
@@ -631,7 +623,7 @@ export default {
       // opacity: 0.6;
       margin-top: 30px;
       .wrap{
-        width: 1200px;
+        max-width: 1200px;
         display: flex;
         align-items: center;
         height: 100%;
@@ -654,9 +646,11 @@ export default {
       flex: 1;
       padding-top: 80px;
       height: 100%;
+      overflow: hidden;
       .title{
         color: #292A2C;
         font-size: 24px;
+        @include ellipsis;
       }
       .des{
         color: #6E7279;
@@ -685,7 +679,7 @@ export default {
     background: linear-gradient(180deg, rgba(245, 248, 254, 0.5), #fff);
     .w{
       padding-left: 18.7vw;
-      height: 100%;
+      // height: 100%;
       padding-top: 50px;
       .w-main{
         height: 100%;
@@ -693,7 +687,7 @@ export default {
       }
     }
     .newProcess{
-      width: 1200px;
+      max-width: 1200px;
       height: 4px;
       background: #F4F6FA;
       border-radius: 2px;
@@ -733,7 +727,7 @@ export default {
       position: absolute;
       z-index: 999;
       top: 109px;
-      left: 1000px;
+      left: 52vw;
     }
     .swiper {
       height: 430px;
